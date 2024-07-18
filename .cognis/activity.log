@@ -38,3 +38,4 @@
 2026-05-20T09:55:05  fix: 60% of the time, it works every time
 2024-06-11T08:56:16  build(cache): lower memory on big inputs
 2024-06-20T15:13:23  refactor(tests): wire the MCP tool schema
+2024-07-18T10:30:30  perf(mcp): add type hints to the public API
