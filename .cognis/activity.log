@@ -42,3 +42,4 @@
 2024-07-29T17:47:37  style(format): improve the demo scenario
 2024-08-26T12:04:44  fix(output): memoize repeated lookups
 2024-09-06T19:21:51  docs(ci): simplify the walker
+2024-10-04T14:38:58  refactor(scan): stream large files without buffering
