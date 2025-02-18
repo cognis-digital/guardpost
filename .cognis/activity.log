@@ -50,3 +50,4 @@
 2024-12-31T13:03:33  ci(report): make timestamps timezone-aware
 2025-01-10T08:20:40  build(tests): support stdin as a source
 2025-02-08T15:37:47  fix(docs): load rules lazily for faster startup
+2025-02-18T10:54:54  perf(parser): handle empty and malformed input
