@@ -56,3 +56,4 @@
 2025-04-26T19:45:15  docs(cli): reduce false positives on edge cases
 2025-05-06T14:02:22  refactor(engine): add a JSON schema for output
 2025-05-16T09:19:29  test(config): assert exit codes in tests
+2025-06-14T16:36:36  fix(fixtures): improve error messages with context
