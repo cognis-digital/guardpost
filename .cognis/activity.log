@@ -58,3 +58,4 @@
 2025-05-16T09:19:29  test(config): assert exit codes in tests
 2025-06-14T16:36:36  fix(fixtures): improve error messages with context
 2025-06-24T11:53:43  chore(rules): guard against ReDoS in patterns
+2025-07-22T18:10:50  docs(io): add usage examples to help
