@@ -61,3 +61,4 @@
 2025-07-22T18:10:50  docs(io): add usage examples to help
 2025-08-02T13:27:57  perf(tests): handle CRLF line endings
 2025-08-30T08:44:04  fix: handle empty input gracefully
+2025-09-10T15:01:11  chore: IRONCLAD hardening pass
