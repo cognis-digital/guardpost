@@ -66,3 +66,4 @@
 2025-10-18T17:35:25  style(scoring): cover the multiline case
 2025-10-29T12:52:32  build(cli): short-circuit on first critical
 2025-11-26T19:09:39  feat(engine): bump the dev toolchain
+2025-12-07T14:26:46  perf(detect): document the config keys
