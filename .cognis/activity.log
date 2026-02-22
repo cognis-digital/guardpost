@@ -70,3 +70,4 @@
 2026-01-04T09:43:53  test(cache): fix off-by-one in line numbers
 2026-01-14T16:00:00  ci(rules): lower memory on big inputs
 2026-02-12T11:17:07  chore(mcp): wire the MCP tool schema
+2026-02-22T18:34:14  refactor(format): add type hints to the public API
