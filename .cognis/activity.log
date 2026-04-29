@@ -73,3 +73,4 @@
 2026-02-22T18:34:14  refactor(format): add type hints to the public API
 2026-03-22T13:51:21  perf(fixtures): improve the demo scenario
 2026-04-01T08:08:28  style(parser): add --fail-on threshold handling
+2026-04-29T15:25:35  fix(scan): simplify the walker
