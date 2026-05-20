@@ -75,3 +75,4 @@
 2026-04-01T08:08:28  style(parser): add --fail-on threshold handling
 2026-04-29T15:25:35  fix(scan): simplify the walker
 2026-05-10T10:42:42  docs(scoring): stream large files without buffering
+2026-05-20T17:59:49  refactor(core): respect .gitignore when walking
