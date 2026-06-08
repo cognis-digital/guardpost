@@ -1,11 +1,30 @@
-"""
-GUARDPOST — Runtime agent firewall — PII redaction, rate limits, policy enforcement
-Part of the Cognis Neural Suite by Cognis Digital.
-https://cognis.digital · MIT License
-"""
-from guardpost.core import scan, TOOL_NAME, TOOL_VERSION
+"""GUARDPOST — runtime agent firewall (PII redaction, policy, rate limits)."""
 
-__version__ = TOOL_VERSION
-__author__ = "Cognis Digital"
-__license__ = "MIT"
-__all__ = ["scan", "TOOL_NAME", "TOOL_VERSION", "__version__"]
+from .core import (
+    Policy,
+    Finding,
+    GuardResult,
+    RateLimiter,
+    guard,
+    redact,
+    scan_pii,
+    scan_policy,
+    fingerprint,
+)
+
+TOOL_NAME = "guardpost"
+TOOL_VERSION = "1.0.0"
+
+__all__ = [
+    "Policy",
+    "Finding",
+    "GuardResult",
+    "RateLimiter",
+    "guard",
+    "redact",
+    "scan_pii",
+    "scan_policy",
+    "fingerprint",
+    "TOOL_NAME",
+    "TOOL_VERSION",
+]
