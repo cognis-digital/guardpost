@@ -1,0 +1,10 @@
+{
+  "name": "@cognis/guardpost",
+  "version": "0.2.0",
+  "description": "JavaScript port of guardpost (Cognis Neural Suite)",
+  "bin": {
+    "guardpost": "index.js"
+  },
+  "license": "LicenseRef-COCL-1.0",
+  "type": "module"
+}
