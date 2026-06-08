@@ -1,0 +1,5 @@
+rate_limit: none
+redact_pii: false
+block_prompt_injection: false
+output_filter: off
+model: gpt-4o

@@ -1,0 +1,6 @@
+# Staging environment
+rate_limit: 100/min
+redact_pii: true
+block_prompt_injection: false  # disabled for staging tests
+output_filter: off
+model: gpt-4o-mini

@@ -1,0 +1,4 @@
+rate_limit: 60/min
+redact_pii: true
+block_prompt_injection: true
+output_filter: strict

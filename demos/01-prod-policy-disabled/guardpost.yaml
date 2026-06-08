@@ -1,0 +1,8 @@
+# Production AI assistant policy
+rate_limit: none
+redact_pii: false
+block_prompt_injection: false
+output_filter: off
+model: gpt-4o
+max_tokens: 4096
+log_requests: true
