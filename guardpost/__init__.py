@@ -1,30 +1,11 @@
-"""GUARDPOST — runtime agent firewall (PII redaction, policy, rate limits)."""
-
-from .core import (
-    Policy,
-    Finding,
-    GuardResult,
-    RateLimiter,
-    guard,
-    redact,
-    scan_pii,
-    scan_policy,
-    fingerprint,
-)
-
-TOOL_NAME = "guardpost"
-TOOL_VERSION = "1.0.0"
-
-__all__ = [
-    "Policy",
-    "Finding",
-    "GuardResult",
-    "RateLimiter",
-    "guard",
-    "redact",
-    "scan_pii",
-    "scan_policy",
-    "fingerprint",
-    "TOOL_NAME",
-    "TOOL_VERSION",
-]
+"""guardpost — part of the Cognis Neural Suite."""
+try:  # re-export the tool's public API + identity from core
+    from guardpost.core import *  # noqa: F401,F403
+except Exception:  # pragma: no cover
+    pass
+try:
+    from guardpost.core import TOOL_NAME, TOOL_VERSION
+except Exception:  # pragma: no cover
+    TOOL_NAME = "guardpost"
+    TOOL_VERSION = "0.1.0"
+__version__ = TOOL_VERSION
