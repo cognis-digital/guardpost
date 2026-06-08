@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: guardpost, labels: { app: guardpost } }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: guardpost } }
+  template:
+    metadata: { labels: { app: guardpost } }
+    spec:
+      containers:
+        - name: guardpost
+          image: ghcr.io/cognis-digital/guardpost:latest
+          ports: [{ containerPort: 8000 }]
+          resources:
+            requests: { cpu: "50m", memory: "64Mi" }
+            limits: { cpu: "500m", memory: "256Mi" }
+---
+apiVersion: v1
+kind: Service
+metadata: { name: guardpost }
+spec:
+  selector: { app: guardpost }
+  ports: [{ port: 80, targetPort: 8000 }]
