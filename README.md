@@ -16,7 +16,7 @@
 </div>
 
 ```bash
-pip install cognis-guardpost
+pip install "git+https://github.com/cognis-digital/guardpost.git"
 guardpost scan .            # → prioritized findings in seconds
 ```
 
@@ -50,7 +50,7 @@ Runtime agent firewall — PII redaction, rate limits, policy enforcement — wi
 ## Quick start
 
 ```bash
-pip install cognis-guardpost
+pip install "git+https://github.com/cognis-digital/guardpost.git"
 guardpost --version
 guardpost scan .                       # scan current project
 guardpost scan . --format json         # machine-readable
