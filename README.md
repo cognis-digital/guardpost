@@ -20,6 +20,12 @@ pip install "git+https://github.com/cognis-digital/guardpost.git"
 guardpost scan .            # → prioritized findings in seconds
 ```
 
+<!-- cognis:layman:start -->
+## What is this?
+
+Guardpost is a security tool that acts as a gatekeeper for AI agent traffic — it inspects text going into or out of an AI system and blocks anything that looks dangerous. It automatically finds and removes private information like email addresses, credit card numbers, social security numbers, and API keys before they can be exposed. It also detects attempts to manipulate AI systems, such as instructions telling the AI to "ignore all previous rules" or reveal secret credentials. Guardpost is for developers and teams who build or deploy AI agents and want a simple, self-hosted way to enforce privacy rules and catch attacks without complex infrastructure.
+<!-- cognis:layman:end -->
+
 ## Contents
 
 - [Why guardpost?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
@@ -47,6 +53,42 @@ Runtime agent firewall — PII redaction, rate limits, policy enforcement — wi
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="quick-start"></a>
+<!-- cognis:install:start -->
+## Install
+
+`guardpost` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/guardpost/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/guardpost/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/guardpost.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/guardpost.git"  # uv
+pip install "git+https://github.com/cognis-digital/guardpost.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/guardpost.git
+cd guardpost && pip install .
+```
+
+Then run:
+```sh
+guardpost --help
+```
+<!-- cognis:install:end -->
+
 ## Quick start
 
 ```bash
