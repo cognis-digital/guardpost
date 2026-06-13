@@ -20,6 +20,33 @@ pip install cognis-guardpost
 guardpost scan .            # → prioritized findings in seconds
 ```
 
+
+## Usage — step by step
+
+1. Install (Python 3.9+):
+   ```bash
+   pip install guardpost
+   ```
+2. Scan a file (or stdin) for PII and policy violations; redaction is on by
+   default:
+   ```bash
+   guardpost scan request.txt
+   cat prompt.txt | guardpost scan -
+   ```
+3. Tighten the policy: use the strict preset, ban terms, set a rate limit, or
+   tag the principal for audit:
+   ```bash
+   guardpost scan request.txt --strict --rate-limit 60 --principal svc-bot \
+       --ban "internal-secret" --ban "api_key"
+   ```
+4. Read the output: the table shows ALLOWED/BLOCKED, the findings
+   (severity/category/kind/excerpt) and the sanitized text. The process exits
+   `2` when traffic is BLOCKED, `0` when ALLOWED — wire that into a pipeline.
+5. Emit machine-readable findings for a gateway / CI:
+   ```bash
+   cat prompt.txt | guardpost scan - --strict --format json
+   ```
+
 ## Contents
 
 - [Why guardpost?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
