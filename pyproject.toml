@@ -36,3 +36,6 @@ guardpost = "guardpost.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["guardpost"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
