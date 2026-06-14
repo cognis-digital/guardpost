@@ -34,3 +34,9 @@ guardpost = "guardpost.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["guardpost"]
+
+[tool.ruff]
+line-length = 150
+
+[tool.ruff.lint]
+select = ["F", "E"]

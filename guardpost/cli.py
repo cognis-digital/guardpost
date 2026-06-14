@@ -28,9 +28,15 @@ EXIT_ERROR = 1
 
 def _read_input(source: str) -> str:
     if source == "-":
-        return sys.stdin.read()
-    with open(source, "r", encoding="utf-8") as fh:
-        return fh.read()
+        try:
+            return sys.stdin.read()
+        except UnicodeDecodeError as exc:
+            raise OSError(f"stdin contains non-UTF-8 bytes: {exc}") from exc
+    try:
+        with open(source, "r", encoding="utf-8") as fh:
+            return fh.read()
+    except UnicodeDecodeError as exc:
+        raise OSError(f"{source!r} contains non-UTF-8 bytes: {exc}") from exc
 
 
 def _build_policy(args) -> Policy:
@@ -46,6 +52,8 @@ def _build_policy(args) -> Policy:
     if args.allow_pii:
         policy.allowed_pii = tuple(args.allow_pii)
     if args.rate_limit is not None:
+        if args.rate_limit < 0:
+            raise ValueError(f"--rate-limit must be >= 0, got {args.rate_limit}")
         policy.rate_limit = args.rate_limit
     return policy
 
@@ -75,14 +83,26 @@ def _cmd_scan(args) -> int:
         sys.stderr.write(f"guardpost: cannot read {args.source!r}: {exc}\n")
         return EXIT_ERROR
 
-    policy = _build_policy(args)
-    result = guard(text, policy=policy, principal=args.principal)
+    try:
+        policy = _build_policy(args)
+    except ValueError as exc:
+        sys.stderr.write(f"guardpost: invalid argument: {exc}\n")
+        return EXIT_ERROR
+
+    try:
+        result = guard(text, policy=policy, principal=args.principal)
+    except Exception as exc:  # pragma: no cover — unexpected engine error
+        sys.stderr.write(f"guardpost: internal error: {exc}\n")
+        return EXIT_ERROR
 
     fmt = getattr(args, "scan_format", None) or args.format
-    if fmt == "json":
-        print(json.dumps(result.to_dict(), indent=2, default=lambda o: o.__dict__))
-    else:
-        print(_render_table(result, args.source))
+    try:
+        if fmt == "json":
+            print(json.dumps(result.to_dict(), indent=2))
+        else:
+            print(_render_table(result, args.source))
+    except (OSError, BrokenPipeError):
+        pass  # output pipe closed — not an error
 
     return EXIT_BLOCKED if result.blocked else EXIT_OK
 

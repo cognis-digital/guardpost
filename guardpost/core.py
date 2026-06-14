@@ -205,8 +205,12 @@ class RateLimiter:
     """In-memory sliding-window rate limiter keyed by principal."""
 
     def __init__(self, limit: int, window_sec: float = 60.0):
+        if not isinstance(limit, int) or limit < 0:
+            raise ValueError(f"RateLimiter limit must be a non-negative integer, got {limit!r}")
+        if not isinstance(window_sec, (int, float)) or window_sec <= 0:
+            raise ValueError(f"RateLimiter window_sec must be a positive number, got {window_sec!r}")
         self.limit = limit
-        self.window = window_sec
+        self.window = float(window_sec)
         self._events: dict = {}
 
     def check(self, principal: str, now: Optional[float] = None) -> bool:
@@ -228,6 +232,8 @@ class RateLimiter:
 
 def fingerprint(text: str) -> str:
     """Stable short hash of input, useful for audit logs without storing text."""
+    if not isinstance(text, str):
+        raise TypeError(f"fingerprint() requires a str, got {type(text).__name__!r}")
     return hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
 
 
@@ -238,6 +244,10 @@ def guard(text: str, policy: Optional[Policy] = None, principal: str = "anonymou
     Decision rule: BLOCK if any policy violation, any critical/high PII when not
     redacting, or a rate-limit breach. Otherwise ALLOW (with PII redacted).
     """
+    if not isinstance(text, str):
+        raise TypeError(f"guard() text must be a str, got {type(text).__name__!r}")
+    if principal is None:
+        principal = "anonymous"
     policy = policy or Policy()
     findings: list = []
     sanitized = text
