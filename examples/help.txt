@@ -1,0 +1,15 @@
+$ guardpost-emit --help
+
+usage: guardpost [-h] [--version] [--format {table,json}] <command> ...
+
+Runtime agent firewall: PII redaction, policy enforcement, rate limits.
+
+positional arguments:
+  <command>
+    scan                scan text/file for PII & policy violations
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --format {table,json}
+                        output format (default: table)

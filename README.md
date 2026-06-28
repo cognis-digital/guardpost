@@ -21,6 +21,64 @@ guardpost scan .            # → prioritized findings in seconds
 ```
 
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ guardpost-emit --version
+guardpost 0.1.0
+```
+
+```console
+$ guardpost-emit --help
+usage: guardpost [-h] [--version] [--format {table,json}] <command> ...
+
+Runtime agent firewall: PII redaction, policy enforcement, rate limits.
+
+positional arguments:
+  <command>
+    scan                scan text/file for PII & policy violations
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --format {table,json}
+                        output format (default: table)
+```
+
+> Blocks above are real `guardpost` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+"guardpost": {
+"platform": "stix",
+"findings": [
+{
+"id": "1234567890",
+"name": "Suspicious Network Traffic",
+"description": "Potential malicious activity detected on network 192.168.1.100",
+"created_by": "John Doe",
+"created_at": "2023-02-20T14:30:00Z"
+},
+{
+"id": "2345678901",
+"name": "Malware Detection",
+"description": "Virus detected on system with IP address 10.0.0.1",
+"created_by": "Jane Smith",
+"created_at": "2023-02-21T16:45:00Z"
+}
+]
+}
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 1. Install (Python 3.9+):
